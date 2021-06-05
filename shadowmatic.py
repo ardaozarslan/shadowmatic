@@ -23,6 +23,7 @@ theDifference = theSize - theGap
 croppedTheSize = theSize - 2 * theGap
 windowName = "son"
 dirName = "newcomers"
+outputDirName = "outputs"
 
 filesList = os.listdir(dirName)
 
@@ -65,5 +66,5 @@ for filePath in filesList:
     elif cv2.waitKey():
         fileName = filePath.split(".")[0]
         maskedImage = cv2.cvtColor(maskedImage, cv2.COLOR_BGRA2RGBA)
-        pil.fromarray(maskedImage).save(f"outputs/{fileName}.png")
+        pil.fromarray(maskedImage).save(f"{outputDirName}/{fileName}.png")
         # cv2.imwrite(f"outputs/{fileName}.png", maskedImage)
