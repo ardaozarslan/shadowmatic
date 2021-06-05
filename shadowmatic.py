@@ -22,7 +22,7 @@ theGap = 38
 theDifference = theSize - theGap
 croppedTheSize = theSize - 2 * theGap
 windowName = "son"
-dirName = "photos"
+dirName = "newcomers"
 
 filesList = os.listdir(dirName)
 
@@ -60,8 +60,10 @@ for filePath in filesList:
     cv2.createTrackbar(trackbarName, windowName, 0, ySliderMax, on_trackbar)
 
     on_trackbar(0)
-    cv2.waitKey()
-    fileName = filePath.split(".")[0]
-    maskedImage = cv2.cvtColor(maskedImage, cv2.COLOR_BGRA2RGBA)
-    pil.fromarray(maskedImage).save(f"outputs/{fileName}.png")
-    # cv2.imwrite(f"outputs/{fileName}.png", maskedImage)
+    if cv2.waitKey() == ord("s"):
+        continue
+    elif cv2.waitKey():
+        fileName = filePath.split(".")[0]
+        maskedImage = cv2.cvtColor(maskedImage, cv2.COLOR_BGRA2RGBA)
+        pil.fromarray(maskedImage).save(f"outputs/{fileName}.png")
+        # cv2.imwrite(f"outputs/{fileName}.png", maskedImage)
